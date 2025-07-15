@@ -1,14 +1,16 @@
-const fontGenerator = (weight: number, size: number) =>
-  `
-        font-weight: ${weight};
-        font-size: ${size}px;
-    `;
+const fontGenerator = (weight: number, size: number) => {
+  return {
+    fontWeight: weight,
+    fontFamily: 'Pretendard',
+    fontSize: `${size}px`,
+  };
+};
 
 export const font = {
-  header1: fontGenerator(700, 42),
-  header2: fontGenerator(700, 32),
-  header3: fontGenerator(700, 24),
-  header4: fontGenerator(700, 20),
+  header1: fontGenerator(600, 42),
+  header2: fontGenerator(600, 32),
+  header3: fontGenerator(600, 24),
+  header4: fontGenerator(600, 20),
   subtitle1: fontGenerator(700, 18),
   subtitle2: fontGenerator(700, 16),
   bodytext1: fontGenerator(400, 16),
