@@ -14,6 +14,8 @@ export const font = {
   bodytext1: fontGenerator(400, 16),
   bodytext2: fontGenerator(400, 14),
   bodytext: fontGenerator(400, 12),
+  caption: fontGenerator(300, 10),
+  "heading-1": fontGenerator(300, 22),
 };
 
 export type FontType = keyof typeof font;
