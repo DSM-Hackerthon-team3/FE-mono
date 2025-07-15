@@ -15,11 +15,16 @@ const InputStyle = styled.input`
   height: 52px;
   font-size:18px;
   padding: 0 12px;
+  border: 1px solid #000;
 `;
 
-const Text = styled.p``;
+const Text = styled.p`
+font-weight: bold;
+font-size: 20px;
+`;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
 `;
