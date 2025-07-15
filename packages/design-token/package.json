@@ -1,6 +1,17 @@
 {
   "name": "@packages/design-token",
   "packageManager": "yarn@4.9.2",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./dist/index.js"
+    }
+  },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
     "@emotion/css": "^11.13.5",

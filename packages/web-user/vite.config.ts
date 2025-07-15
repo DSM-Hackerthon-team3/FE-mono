@@ -14,6 +14,10 @@ export default defineConfig({
     preserveSymlinks: true,
     alias: {
       '@': path.resolve(process.cwd(), './src'),
+      '@packages/design-token': path.resolve(
+        __dirname,
+        '../design-token/dist/index.js',
+      )
     },
   },
   optimizeDeps: {
