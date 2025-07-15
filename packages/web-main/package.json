@@ -1,5 +1,5 @@
 {
-  "name": "@packages/admin",
+  "name": "@packages/main",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@packages/design-token": "workspace:^",
+    "@packages/ui": "workspace:^",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
-    "@types/node": "^24.0.13",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.1",
     "@vitejs/plugin-react-swc": "^3.10.2",
@@ -28,6 +28,5 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4"
-  },
-  "packageManager": "yarn@4.9.2"
+  }
 }

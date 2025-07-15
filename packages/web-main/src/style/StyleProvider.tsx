@@ -1,5 +1,5 @@
-import { GlobalStyle } from '@packages/design-token';
-import React from 'react';
+import { GlobalStyle } from "@packages/design-token";
+import React from "react";
 
 export const StyledProvider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -7,5 +7,5 @@ export const StyledProvider = ({ children }: { children: React.ReactNode }) => {
       <GlobalStyle />
       {children}
     </React.Fragment>
-  )
-}
+  );
+};

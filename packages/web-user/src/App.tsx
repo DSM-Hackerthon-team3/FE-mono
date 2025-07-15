@@ -1,12 +1,12 @@
-import { RouterProvider } from "react-router-dom";
-import { Router } from "./router";
+// import { RouterProvider } from "react-router-dom";
+// import { Router } from "./router";
 import { Input } from "./components/Input";
 
 function App() {
   //return <RouterProvider router={Router} />;
   return <div>
     <Input />
-    </div>
+  </div>
 }
 
 export default App;
