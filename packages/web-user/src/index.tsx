@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
+import { StyledProvider } from './style/StyledProvider'
 
 const root = createRoot(
   document.getElementById("root") as HTMLElement
@@ -8,6 +9,8 @@ const root = createRoot(
 
 root.render(
   <StrictMode>
-    <App />
+    <StyledProvider>
+      <App />
+    </StyledProvider>
   </StrictMode>,
 )

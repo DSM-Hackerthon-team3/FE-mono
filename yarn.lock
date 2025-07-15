@@ -1201,7 +1201,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:^11.14.0":
+"@emotion/styled@npm:^11.14.0, @emotion/styled@npm:^11.14.1":
   version: 11.14.1
   resolution: "@emotion/styled@npm:11.14.1"
   dependencies:
@@ -2157,7 +2157,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@packages/design-token@workspace:packages/design-token":
+"@packages/design-token@workspace:^, @packages/design-token@workspace:packages/design-token":
   version: 0.0.0-use.local
   resolution: "@packages/design-token@workspace:packages/design-token"
   dependencies:
@@ -2181,7 +2181,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@packages/user@workspace:packages/web-user"
   dependencies:
+    "@emotion/css": "npm:^11.13.5"
+    "@emotion/react": "npm:^11.14.0"
+    "@emotion/styled": "npm:^11.14.1"
     "@eslint/js": "npm:^9.30.1"
+    "@packages/design-token": "workspace:^"
     "@types/react": "npm:18.3.1"
     "@types/react-dom": "npm:18.3.1"
     "@vitejs/plugin-react-swc": "npm:^3.10.2"
