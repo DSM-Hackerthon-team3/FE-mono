@@ -31,13 +31,13 @@ export const Login = () => {
             <Input
               label="아이디"
               onChange={() => {}}
-              placeholder="아이디를 입력하세요"
+              placeholder="아이디를 입력해주세요"
               error=""
             />
             <Input
               label="비밀번호"
               onChange={() => {}}
-              placeholder="비밀번호를 입력하세요"
+              placeholder="비밀번호를 입력해주세요"
               error=""
               password
             />
