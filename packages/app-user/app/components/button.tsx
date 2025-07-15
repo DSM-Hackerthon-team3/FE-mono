@@ -4,7 +4,7 @@ import { color } from "../../../design-token/src/theme";
 interface IButtonProps {
   children?: React.ReactNode;
   onPress: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const Button = ({ children, onPress, disabled }: IButtonProps) => {
