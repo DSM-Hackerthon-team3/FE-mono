@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { instance } from "../axios";
 import { AuthResponse } from "./type";
@@ -101,5 +101,22 @@ export const useAdminLogin = () => {
       });
       window.location.href = 'http://localhost:3002/';
     },
+  });
+};
+
+interface UseGetExistResponse {
+  exist: boolean;
+}
+
+export const useGetExist = (userId: string) => {
+  return useQuery({
+    queryKey: ['user-exist', userId],
+    queryFn: async () => {
+      const response = await instance.get<UseGetExistResponse>('/user/exist', {
+        params: { id: userId },
+      });
+      return response.data;
+    },
+    enabled: !!userId
   });
 };

@@ -21,6 +21,7 @@ export const MentoringDetailPage = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [lastCharacterMessage, setLastCharacterMessage] = useState(""); // 마지막 캐릭터 메시지 저장
   const [isEnding, setIsEnding] = useState(false); // 대화 종료 상태 추가
+  const [isFirstRequest, setIsFirstRequest] = useState(true); // 첫 번째 요청 여부 추가
 
   const initialCharacterMessages = [
     { id: 1, text: `안녕하세요! 저는 당신의 ${jobCategories.find(job => job.id === id)?.name} 멘토입니다.`, sender: "character", timestamp: new Date() },
@@ -30,9 +31,7 @@ export const MentoringDetailPage = () => {
     { id: 5, text: "직업체험을 시작하시겠습니까?", sender: "character", timestamp: new Date() },
   ];
 
-  const [messages, setMessages] = useState([
-    initialCharacterMessages[0]
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -73,10 +72,13 @@ export const MentoringDetailPage = () => {
       setCurrentMessage("");
       setIsTyping(true);
 
+      // 첫 번째 요청은 무조건 빈 문자열로 보내기
+      const contentToSend = isFirstRequest ? "" : currentMessage;
+
       postMentoring(
         {
           job: `${id}`,
-          content: currentMessage
+          content: contentToSend
         },
         {
           onSuccess: (responseData) => {
@@ -90,6 +92,7 @@ export const MentoringDetailPage = () => {
             setMessages(prev => [...prev, characterResponse]);
             setLastCharacterMessage(responseData.data.content);
             setIsTyping(false);
+            setIsFirstRequest(false); // 첫 번째 요청 완료
           },
           onError: () => {
             setIsTyping(false);
@@ -131,7 +134,7 @@ export const MentoringDetailPage = () => {
     postMentoring(
       {
         job: `${id}`,
-        content: "직업체험 시작하기",
+        content: "", // 빈 문자열로 변경
       },
       {
         onSuccess: (responseData) => {
@@ -145,6 +148,7 @@ export const MentoringDetailPage = () => {
           setMessages(prev => [...prev, characterResponse]);
           setLastCharacterMessage(responseData.data.content);
           setIsTyping(false);
+          setIsFirstRequest(false); // 첫 번째 요청 완료
         },
         onError: () => {
           setIsTyping(false);
@@ -161,7 +165,7 @@ export const MentoringDetailPage = () => {
   const handleEndChat = () => {
     const farewellMessage = {
       id: Date.now(),
-      text: `${id}직업 체험이 끝났습니다. 피드백: 당신은 주어진 상황에 대해 몰입했고, 올바르게 대처했습니다. 다만 아쉬운점은, 직업 이해도와 직업에 대한 관심이 부족한 것 같습니다. 따라서 앞으로 더 많은 직업을 체험해보시고, 직업에 대한 관심을 키워가시면 좋을 것 같습니다.`,
+      text: `${jobCategories.find(job => job.id === id)?.name}직업 체험이 끝났습니다. 피드백: 당신은 주어진 상황에 대해 몰입했고, 올바르게 대처했습니다. 다만 아쉬운점은, 직업 이해도와 직업에 대한 관심이 부족한 것 같습니다. 따라서 앞으로 더 많은 직업을 체험해보시고, 직업에 대한 관심을 키워가시면 좋을 것 같습니다.`,
       sender: "character",
       timestamp: new Date()
     };

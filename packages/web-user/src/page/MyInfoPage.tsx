@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 import { color, font } from "@packages/design-token";
 import { Profile } from "@/assets";
 import { useGetMyPage } from "@/api/user";
+import { useNavigate } from "react-router-dom";
 
 export const MyInfoPage = () => {
   const { data } = useGetMyPage();
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -14,6 +16,7 @@ export const MyInfoPage = () => {
           <Avatar src={Profile} alt={`profile`} />
           <Name>{data?.id ?? 0}</Name>
           <Job>{data?.jobType ?? 0}</Job>
+          <Gender>{data?.gender ?? "성별 정보 없음"}</Gender>
         </ProfileSection>
 
         <Divider />
@@ -22,7 +25,7 @@ export const MyInfoPage = () => {
           <SectionTitle>내가 작성한 글</SectionTitle>
           <PostList>
             {data?.posts.map((data) => (
-              <PostItem key={data?.id ?? 0}>
+              <PostItem key={data?.id ?? 0} onClick={() => navigate(`/board/${data?.id}`)}>
                 <PostTitle>{data?.title}</PostTitle>
                 <PostDate>{data?.content}</PostDate>
               </PostItem>
@@ -85,6 +88,12 @@ const Job = styled.p`
           ${font.subtitle1};
           color: ${color.main[500]};
           margin-top: 8px;
+          `;
+
+const Gender = styled.p`
+          ${font.subtitle1};
+          color: ${color.gray[600]};
+          margin-top: 4px;
           `;
 
 const Divider = styled.div`

@@ -7,5 +7,6 @@ export interface Post {
 export interface MyPageResponse {
   id: string;
   jobType: string;
+  gender: string;
   posts: Post[];
 }

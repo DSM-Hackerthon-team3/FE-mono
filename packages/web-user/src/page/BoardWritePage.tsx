@@ -11,10 +11,6 @@ export const BoardWritePage = () => {
 
   const { mutate: postPost } = usePostPost();
 
-  const handleSubmit = () => {
-    postPost({ title, content });
-  };
-
   const handleCancel = () => {
     navigate("/board");
   };
@@ -38,7 +34,7 @@ export const BoardWritePage = () => {
         />
         <ButtonContainer>
           <CancelButton onClick={handleCancel}>취소</CancelButton>
-          <SubmitButton onClick={handleSubmit}>등록</SubmitButton>
+          <SubmitButton onClick={() => postPost({ title, content })}>등록</SubmitButton>
         </ButtonContainer>
       </Form>
     </Container>

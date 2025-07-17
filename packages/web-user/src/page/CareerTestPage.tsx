@@ -68,8 +68,16 @@ export const CareerTestPage = () => {
     if (currentQuestionIndex !== -1 && currentQuestionIndex < surveyQuestions.length - 1) {
       const nextQuestionId = surveyQuestions[currentQuestionIndex + 1].id;
       const nextQuestionElement = questionRefs.current[nextQuestionId];
-      if (nextQuestionElement) {
-        nextQuestionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (nextQuestionElement && contentContainerRef.current) {
+        // 헤더 높이만큼 오프셋을 고려하여 스크롤
+        const headerHeight = 150; // 헤더 높이 (패딩 포함)
+        const elementTop = nextQuestionElement.offsetTop;
+        const scrollTop = elementTop - headerHeight;
+
+        contentContainerRef.current.scrollTo({
+          top: scrollTop,
+          behavior: 'smooth'
+        });
       }
     }
   };
@@ -95,7 +103,10 @@ export const CareerTestPage = () => {
       };
 
       if (!(questionId === '135' || questionId === '136')) {
-        scrollToNextQuestion(questionId);
+        // 약간의 지연을 두어 자연스러운 스크롤
+        setTimeout(() => {
+          scrollToNextQuestion(questionId);
+        }, 100);
       }
       return newAnswers;
     });
@@ -301,7 +312,7 @@ const MainContainer = styled.div`
 const TestContainer = styled.div`
   width: 100%;
   max-width: 1200px;
-  height: 100%;
+  height: calc(100vh - 106px); /* 상단 여백 고려 */
   display: flex;
   flex-direction: column;
   background: white;
@@ -310,15 +321,14 @@ const TestContainer = styled.div`
   overflow: hidden;
   
   @media (max-width: 768px) {
-    height: auto;
-    min-height: calc(100vh - 96px);
+    height: calc(100vh - 52px);
     border-radius: 16px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   }
   
   @media (max-width: 480px) {
     border-radius: 12px;
-    min-height: calc(100vh - 88px);
+    height: calc(100vh - 100px);
   }
 `;
 
@@ -326,6 +336,7 @@ const TestHeader = styled.div`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 30px 40px;
   color: white;
+  flex-shrink: 0; /* 헤더 크기 고정 */
   
   @media (max-width: 768px) {
     padding: 24px 24px;
@@ -420,6 +431,7 @@ const TestContent = styled.div`
   flex: 1;
   overflow-y: auto;
   padding: 40px;
+  position: relative; /* 스크롤 위치 계산을 위해 추가 */
   
   @media (max-width: 768px) {
     padding: 24px;
@@ -516,6 +528,7 @@ const SubmitContainer = styled.div`
   border-top: 1px solid ${color.gray[200]};
   display: flex;
   justify-content: center;
+  flex-shrink: 0; /* 푸터 크기 고정 */
   
   @media (max-width: 768px) {
     padding: 24px;
