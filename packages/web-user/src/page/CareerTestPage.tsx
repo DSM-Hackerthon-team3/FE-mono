@@ -42,7 +42,7 @@ export const CareerTestPage = () => {
     const fetchQuestions = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("/inspct/openapi/v2/test?apikey=8175310316664d182aa8ee8a4e13ad91&q=33");
+        const response = await fetch("https://www.career.go.kr/inspct/openapi/v2/test?apikey=8175310316664d182aa8ee8a4e13ad91&q=33");
         const data = await response.json();
         const questions = data.result.questions.map((item) => ({
           id: String(item.no),
@@ -138,7 +138,7 @@ export const CareerTestPage = () => {
         trgetse: getTrgetse(),
       };
 
-      const response = await fetch("/inspct/openapi/v2/report", {
+      const response = await fetch("https://www.career.go.kr/inspct/openapi/v2/report", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
