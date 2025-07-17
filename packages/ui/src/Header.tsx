@@ -34,6 +34,9 @@ const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   background-color: ${color.main[50]};
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const TextDiv = styled.div`

@@ -217,7 +217,7 @@ export const CareerTestPage = () => {
                 {isSubmitting ? (
                   <>
                     <ButtonSpinner />
-                    결과 생성 중...
+                    <SubmitButtonText>결과 생성 중...</SubmitButtonText>
                   </>
                 ) : (
                   '결과 보기'
@@ -274,9 +274,9 @@ export const CareerTestPage = () => {
   );
 };
 
-// 공통 스타일
+// 공통 스타일 - 모바일 반응형 추가
 const MainContainer = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
@@ -284,9 +284,20 @@ const MainContainer = styled.div`
   padding: 20px;
   padding-top: 86px; /* 66px header + 20px padding */
   box-sizing: border-box;
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+    padding-top: 20px; /* 모바일에서 상단 패딩 조정 */
+    align-items: flex-start;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px;
+    padding-top: 76px;
+  }
 `;
 
-// 테스트 페이지 스타일
+// 테스트 페이지 스타일 - 모바일 반응형
 const TestContainer = styled.div`
   width: 100%;
   max-width: 1200px;
@@ -297,30 +308,68 @@ const TestContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: calc(100vh - 96px);
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 12px;
+    min-height: calc(100vh - 88px);
+  }
 `;
 
 const TestHeader = styled.div`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 30px 40px;
   color: white;
+  
+  @media (max-width: 768px) {
+    padding: 24px 24px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 20px 20px;
+  }
 `;
 
 const HeaderContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
+  @media (max-width: 480px) {
+    gap: 16px;
+  }
 `;
 
 const TestTitle = styled.h1`
   ${font.header1};
   margin: 0;
   font-weight: 700;
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 24px;
+    line-height: 1.4;
+  }
 `;
 
 const ProgressContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
 `;
 
 const ProgressInfo = styled.div`
@@ -332,11 +381,19 @@ const ProgressInfo = styled.div`
 const ProgressText = styled.span`
   ${font.header4};
   opacity: 0.9;
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 const ProgressPercentage = styled.span`
   ${font.header3};
   font-weight: 600;
+  
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
 
 const ProgressBarContainer = styled.div`
@@ -345,6 +402,10 @@ const ProgressBarContainer = styled.div`
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   overflow: hidden;
+  
+  @media (max-width: 480px) {
+    height: 6px;
+  }
 `;
 
 const ProgressBar = styled.div<{ progress: number }>`
@@ -360,8 +421,20 @@ const TestContent = styled.div`
   overflow-y: auto;
   padding: 40px;
   
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 20px;
+  }
+  
   &::-webkit-scrollbar {
     width: 8px;
+    
+    @media (max-width: 480px) {
+      width: 4px;
+    }
   }
   
   &::-webkit-scrollbar-track {
@@ -383,6 +456,14 @@ const QuestionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  
+  @media (max-width: 768px) {
+    gap: 32px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 24px;
+  }
 `;
 
 const LoadingContainer = styled.div`
@@ -392,6 +473,11 @@ const LoadingContainer = styled.div`
   justify-content: center;
   height: 300px;
   gap: 20px;
+  
+  @media (max-width: 480px) {
+    height: 200px;
+    gap: 16px;
+  }
 `;
 
 const LoadingSpinner = styled.div`
@@ -401,6 +487,12 @@ const LoadingSpinner = styled.div`
   border-top: 4px solid ${color.main[500]};
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -412,6 +504,10 @@ const LoadingText = styled.p`
   ${font.header3};
   color: ${color.gray[500]};
   margin: 0;
+  
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 const SubmitContainer = styled.div`
@@ -420,6 +516,14 @@ const SubmitContainer = styled.div`
   border-top: 1px solid ${color.gray[200]};
   display: flex;
   justify-content: center;
+  
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 20px;
+  }
 `;
 
 const SubmitButton = styled.button`
@@ -437,9 +541,28 @@ const SubmitButton = styled.button`
   gap: 12px;
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
   
+  @media (max-width: 768px) {
+    padding: 14px 40px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+  
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    
+    @media (max-width: 480px) {
+      transform: none; /* 모바일에서는 hover 효과 제거 */
+    }
   }
   
   &:disabled {
@@ -450,6 +573,12 @@ const SubmitButton = styled.button`
   }
 `;
 
+const SubmitButtonText = styled.span`
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+`;
+
 const ButtonSpinner = styled.div`
   width: 20px;
   height: 20px;
@@ -457,6 +586,12 @@ const ButtonSpinner = styled.div`
   border-top: 2px solid white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  flex-shrink: 0;
+  
+  @media (max-width: 480px) {
+    width: 16px;
+    height: 16px;
+  }
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -464,10 +599,18 @@ const ButtonSpinner = styled.div`
   }
 `;
 
-// 설정 페이지 스타일
+// 설정 페이지 스타일 - 모바일 반응형
 const SetupContainer = styled.div`
   width: 100%;
   max-width: 600px;
+  
+  @media (max-width: 768px) {
+    max-width: 500px;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
 `;
 
 const SetupCard = styled.div`
@@ -475,6 +618,16 @@ const SetupCard = styled.div`
   border-radius: 24px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
+  
+  @media (max-width: 768px) {
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const CardHeader = styled.div`
@@ -483,12 +636,33 @@ const CardHeader = styled.div`
   text-align: center;
   color: white;
   border-radius: 24px 24px 0 0;
+  
+  @media (max-width: 768px) {
+    padding: 40px 32px;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 32px 24px;
+    border-radius: 16px 16px 0 0;
+  }
 `;
 
 const SetupTitle = styled.h1`
   ${font.header1};
   margin: 0 0 12px 0;
   font-weight: 700;
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
 `;
 
 const SetupSubtitle = styled.p`
@@ -496,6 +670,15 @@ const SetupSubtitle = styled.p`
   margin: 0;
   opacity: 0.9;
   font-weight: 400;
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 1.5;
+  }
 `;
 
 const SetupContent = styled.div`
@@ -503,12 +686,26 @@ const SetupContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 35px;
+  
+  @media (max-width: 768px) {
+    padding: 40px 32px;
+    gap: 32px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 32px 24px;
+    gap: 28px;
+  }
 `;
 
 const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  
+  @media (max-width: 480px) {
+    gap: 14px;
+  }
 `;
 
 const FormLabel = styled.label`
@@ -516,6 +713,15 @@ const FormLabel = styled.label`
   color: ${color.gray[800]};
   font-weight: 600;
   margin-bottom: 8px;
+  
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
 `;
 
 const RadioWrapper = styled.div`
@@ -523,12 +729,21 @@ const RadioWrapper = styled.div`
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    
+    @media (max-width: 480px) {
+      gap: 12px;
+      flex-direction: column;
+    }
   }
 `;
 
 const SelectWrapper = styled.div`
   .select-container {
     position: relative;
+    
+    @media (max-width: 480px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -539,6 +754,18 @@ const CardFooter = styled.div`
   justify-content: center;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
+  
+  @media (max-width: 768px) {
+    padding: 24px 32px 32px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 20px 24px 24px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
 `;
 
 const StartButton = styled.button`
@@ -553,9 +780,27 @@ const StartButton = styled.button`
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
   
+  @media (max-width: 768px) {
+    padding: 16px 40px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    min-width: 200px;
+  }
+  
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    
+    @media (max-width: 480px) {
+      transform: none; /* 모바일에서는 hover 효과 제거 */
+    }
   }
   
   &:disabled {
