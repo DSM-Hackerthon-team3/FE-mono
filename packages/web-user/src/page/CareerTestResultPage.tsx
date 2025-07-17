@@ -28,7 +28,7 @@ export const CareerTestResultPage = () => {
               <SubText>아래 버튼을 클릭하여 상세한 결과를 확인하세요.</SubText>
               <ReportButton href={reportUrl} target="_blank" rel="noopener noreferrer">
                 <ButtonIcon>📊</ButtonIcon>
-                결과 보고서 보기
+                <ButtonText>결과 보고서 보기</ButtonText>
               </ReportButton>
             </>
           ) : (
@@ -58,6 +58,17 @@ const Container = styled.div`
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px;
+    padding-top: 40px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -73,8 +84,15 @@ const ContentWrapper = styled.div`
   position: relative;
   
   @media (max-width: 768px) {
-    padding: 40px 20px;
-    margin: 10px;
+    padding: 50px 32px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  @media (max-width: 480px) {
+    padding: 40px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
   }
 `;
 
@@ -88,12 +106,34 @@ const IconContainer = styled.div`
   justify-content: center;
   margin-bottom: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  
+  @media (max-width: 768px) {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
+  
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const CheckIcon = styled.div`
   color: white;
   font-size: 36px;
   font-weight: bold;
+  
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 const HeadText = styled.h1`
@@ -102,6 +142,18 @@ const HeadText = styled.h1`
   margin-bottom: 40px;
   text-align: center;
   position: relative;
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+    margin-bottom: 32px;
+    line-height: 1.3;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 24px;
+    margin-bottom: 28px;
+    line-height: 1.4;
+  }
   
   &::after {
     content: '';
@@ -113,6 +165,18 @@ const HeadText = styled.h1`
     height: 4px;
     background: linear-gradient(90deg, ${color.main[400]} 0%, ${color.main[600]} 100%);
     border-radius: 2px;
+    
+    @media (max-width: 768px) {
+      bottom: -12px;
+      width: 50px;
+      height: 3px;
+    }
+    
+    @media (max-width: 480px) {
+      bottom: -10px;
+      width: 40px;
+      height: 3px;
+    }
   }
 `;
 
@@ -128,7 +192,15 @@ const ResultCard = styled.div`
   border: 1px solid ${color.gray[200]};
   
   @media (max-width: 768px) {
-    padding: 30px 20px;
+    padding: 32px 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 24px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -138,6 +210,17 @@ const ResultText = styled.p`
   text-align: center;
   margin-bottom: 12px;
   font-weight: 600;
+  
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 16px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
 `;
 
 const SubText = styled.p`
@@ -146,6 +229,17 @@ const SubText = styled.p`
   text-align: center;
   margin-bottom: 30px;
   line-height: 1.6;
+  
+  @media (max-width: 768px) {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
 `;
 
 const ReportButton = styled.a`
@@ -162,10 +256,31 @@ const ReportButton = styled.a`
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   
+  @media (max-width: 768px) {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    gap: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    min-width: 200px;
+  }
+  
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     background: linear-gradient(135deg, ${color.main[600]} 0%, ${color.main[700]} 100%);
+    
+    @media (max-width: 480px) {
+      transform: none; /* 모바일에서는 hover 효과 제거 */
+    }
   }
   
   &:active {
@@ -175,6 +290,21 @@ const ReportButton = styled.a`
 
 const ButtonIcon = styled.span`
   font-size: 18px;
+  flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+`;
+
+const ButtonText = styled.span`
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 const ErrorContainer = styled.div`
@@ -182,11 +312,25 @@ const ErrorContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  
+  @media (max-width: 480px) {
+    gap: 12px;
+  }
 `;
 
 const ErrorIcon = styled.div`
   font-size: 48px;
   margin-bottom: 8px;
+  
+  @media (max-width: 768px) {
+    font-size: 40px;
+    margin-bottom: 6px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 32px;
+    margin-bottom: 4px;
+  }
 `;
 
 const ErrorText = styled.p`
@@ -194,12 +338,30 @@ const ErrorText = styled.p`
   color: ${color.error};
   text-align: center;
   font-weight: 600;
+  
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 `;
 
 const ErrorSubText = styled.p`
   ${font.bodytext1};
   color: ${color.gray[600]};
   text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 1.6;
+  }
 `;
 
 const FooterText = styled.p`
@@ -208,6 +370,18 @@ const FooterText = styled.p`
   text-align: center;
   line-height: 1.6;
   margin-top: 20px;
+  
+  @media (max-width: 768px) {
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 12px;
+    margin-top: 12px;
+    line-height: 1.7;
+    padding: 0 8px;
+  }
 `;
 
 const HomeButton = styled.button`
@@ -219,9 +393,34 @@ const HomeButton = styled.button`
   border: none;
   cursor: pointer;
   margin-top: 30px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+    margin-top: 24px;
+    font-size: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px 18px;
+    margin-top: 20px;
+    font-size: 14px;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 200px;
+  }
 
   &:hover {
     background-color: ${color.gray[400]};
+    transform: translateY(-1px);
+    
+    @media (max-width: 480px) {
+      transform: none; /* 모바일에서는 hover 효과 제거 */
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
   }
 `;
