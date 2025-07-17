@@ -7,6 +7,8 @@ export interface PostResponse {
   commentsCnt: number;
 }
 
+export type PostListResponse = PostResponse[];
+
 export interface PostDetailResponse {
   author: string;
   id: number;

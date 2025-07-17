@@ -29,15 +29,15 @@ export const BoardPage = () => {
           </tr>
         </thead>
         <tbody>
-          {posts?.map((post, index) => (
-            <TableRow key={index} onClick={() => handleRowClick(post.id)}>
+          {posts?.map((post) => (
+            <TableRow key={post.id} onClick={() => handleRowClick(post.id)}>
               <TableCell>{post.author}</TableCell>
               <TableCell>{post.title}</TableCell>
             </TableRow>
           ))}
         </tbody>
       </BoardTable>
-    </Container>
+    </Container >
   );
 };
 

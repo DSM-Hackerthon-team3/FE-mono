@@ -1,6 +1,6 @@
 import { useQuery, useMutation, QueryClient } from "@tanstack/react-query";
 import { instance } from "../axios";
-import { PostDetailResponse, PostResponse, PostPostRequest, PostCommentRequest } from "./type";
+import { PostDetailResponse, Post, PostPostRequest, PostCommentRequest } from "./type";
 import { useNavigate } from "react-router-dom";
 
 const router = "/post";
@@ -9,7 +9,7 @@ export const useGetPosts = () => {
   return useQuery({
     queryKey: ['getPosts'],
     queryFn: async () => {
-      const { data } = await instance.get<PostResponse>(`/posts`);
+      const { data } = await instance.get<Post[]>(`/posts`);
       return data;
     },
     staleTime: 5000,

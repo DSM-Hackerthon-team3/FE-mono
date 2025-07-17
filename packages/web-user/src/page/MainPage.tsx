@@ -120,7 +120,7 @@ export const MainPage = () => {
         <SectionTitle>새로 올라온 게시글</SectionTitle>
         <Hr />
         <PostList>
-          {posts?.data?.slice(0, 4).map((post) => (
+          {posts?.slice(0, 4).map((post) => (
             <Section
               key={post.id}
               title={post.title}

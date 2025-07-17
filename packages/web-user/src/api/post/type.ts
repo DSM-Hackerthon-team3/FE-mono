@@ -7,9 +7,7 @@ export interface Post {
   commentsCnt: number;
 }
 
-export interface PostResponse {
-  data: Post[];
-}
+export type PostResponse = Post[];
 
 export interface PostDetailResponse {
   author: string;

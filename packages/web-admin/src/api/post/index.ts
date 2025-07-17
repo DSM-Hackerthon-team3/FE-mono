@@ -9,7 +9,7 @@ export const useGetPosts = () => {
   return useQuery({
     queryKey: ['getPosts'],
     queryFn: async () => {
-      const { data } = await instance.get<PostResponse>(`/posts`);
+      const { data } = await instance.get<PostResponse[]>(`/posts`);
       return data;
     },
     staleTime: 5000,
