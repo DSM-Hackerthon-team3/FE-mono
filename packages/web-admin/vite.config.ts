@@ -5,6 +5,10 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 3002,
+    hmr: true
+  },
   build: {
     outDir: 'dist',
     chunkSizeWarningLimit: 3500,
@@ -14,6 +18,11 @@ export default defineConfig({
     preserveSymlinks: true,
     alias: {
       '@': path.resolve(process.cwd(), './src'),
+      '@packages/design-token': path.resolve(
+        __dirname,
+        '../design-token/src/index.ts',
+      ),
+      '@packages/ui': path.resolve(__dirname, '../ui/src'),
     },
   },
   optimizeDeps: {

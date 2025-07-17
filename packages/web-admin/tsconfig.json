@@ -4,7 +4,9 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@packages/design-token": ["../design-token/src"],
+      "@packages/ui": ["../ui/src"]
     },
     "typeRoots": ["node_modules/@types", "src/@types"]
   },

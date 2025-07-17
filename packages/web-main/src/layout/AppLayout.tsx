@@ -4,24 +4,27 @@ import { Outlet } from "react-router-dom";
 
 export const AppLayout = () => {
   return (
-    <AppContainer>
+    <>
       <Header />
-      <MainContent>
-        <Outlet />
-      </MainContent>
-    </AppContainer>
+      <AppContainer>
+        <MainContent>
+          <Outlet />
+        </MainContent>
+      </AppContainer>
+    </>
   );
 };
 
 const AppContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 66px);
   display: flex;
   flex-direction: row;
   overflow-x: hidden;
-  margin-top: 66px;
+  overflow-y: hidden;
 `;
 
 const MainContent = styled.div`
   flex: 1;
+  overflow: hidden;
 `;

@@ -1,17 +1,27 @@
 import styled from "@emotion/styled";
 import { color, font } from "@packages/design-token";
+import { Logo } from "./assets";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
       <HeaderDiv>
-        <Text>게시판</Text>
-        <Text>내 정보</Text>
-        <Text>로그아웃</Text>
+        <Img src={Logo} alt="" onClick={() => navigate("/")} />
+        <TextDiv>
+          <Text onClick={() => navigate("/board")}>게시판</Text>
+          <Text onClick={() => navigate("/my-info")}>내 정보</Text>
+          <Text onClick={() => navigate("/logout")}>로그아웃</Text>
+        </TextDiv>
       </HeaderDiv>
     </HeaderContainer>
   );
 };
+
+const Img = styled.img`
+  cursor: pointer;
+`;
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -22,8 +32,13 @@ const HeaderContainer = styled.header`
   padding: 0 76px;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   background-color: ${color.main[50]};
+`;
+
+const TextDiv = styled.div`
+  display: flex;
+  gap: 40px;
 `;
 
 const Text = styled.p`
@@ -33,6 +48,8 @@ const Text = styled.p`
 `;
 
 const HeaderDiv = styled.div`
+width: 100%;
   display: flex;
-  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
 `;

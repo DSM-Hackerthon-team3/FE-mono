@@ -5,6 +5,18 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 3001,
+    hmr: true,
+    proxy: {
+      '/inspct': {
+        target: 'https://www.career.go.kr',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/inspct/, '/inspct'),
+        secure: false,
+      },
+    },
+  },
   build: {
     outDir: 'dist',
     chunkSizeWarningLimit: 3500,
@@ -17,7 +29,8 @@ export default defineConfig({
       '@packages/design-token': path.resolve(
         __dirname,
         '../design-token/src/index.ts',
-      )
+      ),
+      '@packages/ui': path.resolve(__dirname, '../ui/src'),
     },
   },
   optimizeDeps: {

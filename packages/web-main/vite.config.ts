@@ -6,6 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: 3000,
     hmr: true
   },
   build: {
@@ -20,7 +21,8 @@ export default defineConfig({
       '@packages/design-token': path.resolve(
         __dirname,
         '../design-token/src/index.ts',
-      )
+      ),
+      '@packages/ui': path.resolve(__dirname, '../ui/src'),
     },
   },
   optimizeDeps: {
